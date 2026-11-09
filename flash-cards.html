@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="flash-cards">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="assets/favicon.png">
+    <title>FluenTable | Flash Cards</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" id="logo">
+           <div class="logo-icon">
+           
+            <div class="logo-circle-center"> 
+                <div class="logo-circle-left"></div>
+                <div class="logo-inner-circle"></div>
+            </div> 
+           </div>
+        
+        </div>
+        <div class="header-actions">
+            <span class="user-role-badge" id="user-role-badge"></span>
+            <span class="user-email" id="user-email"></span>
+            <button id="logout-btn" class="logout-btn" title="Sair">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <!-- SEÇÃO SUPERIOR: NAVEGAÇÃO PRINCIPAL & MEDIAÇÃO -->
+            <ul class="sidebar-menu-top">
+                <li data-page="home"><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+                <li data-page="flash-cards"><a href="flash-cards.html"><i class="fa-solid fa-layer-group"></i><span>Flash Cards</span></a></li>
+            
+                <li data-page="slide-show" class="mediator-access hidden"><a href="presentation.html"><i class="fa-solid fa-play"></i><span>Iniciar sessão</span></a></li>
+                <li data-page="set-meeting" class="mediator-access hidden"><a href="set-meeting.html"><i class="fa-solid fa-comments"></i><span>Temas</span></a></li>
+            </ul>
+    
+            <!-- SEÇÃO INFERIOR: CONFIGURAÇÕES & ADMINISTRAÇÃO -->
+            <ul class="sidebar-menu-bottom">
+                <li class="sidebar-divider admin-access hidden"></li>
+                
+                <li data-page="admin" class="admin-access hidden">
+                    <a href="admin.html">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Acessos</span>
+                    </a>
+                </li>   
+                 
+
+                 <li data-page="manage-meetings" data-file="manage-meetings.html" class="mediator-access hidden">
+                    <a href="manage-meetings.html">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>Sessões</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main>
+        <!-- TELA 1: LISTAGEM DE REUNIÕES DISPONÍVEIS -->
+        <div id="meetings-content" class="content" style="max-width: 1200px; width: 90%;">
+            <div class="page-header">
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+              
+                    <h2>FlashCards</h2>
+                </div>
+                <p id="flashcards-subtitle">
+                    Revise os flashcards das suas sessões e fortaleça seu vocabulário
+                </p>
+            </div>
+        
+            <!-- GRADE DE SESSÕES COM GAMIFICAÇÃO -->
+            <div class="classes-grid" id="sessions-grid">
+                <!-- Renderizado dinamicamente com cards gamificados -->
+            </div>
+        </div>
+
+        <!-- TELA 2: MODO DE ESTUDO DO FLASHCARD 3D -->
+        <div id="flash-cards-content" class="content hidden">
+            <div class="back-to-meetings back-button" id="back-to-meetings-btn">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+                <span>Voltar às sessões</span>
+            </div>
+            
+            <div class="page-header">
+                <h2 id="current-meeting-title">Tema da Sessão</h2>
+                <p id="study-instruction-text">Clique no cartão para virar e ver a resposta</p>
+            </div>
+
+
+    
+
+            <div class="flash-cards-study-content ">
+                <div class="flash-card-actions">
+                    <button id="previousCard" class="cards-action-btn" title="Voltar cartão anterior">
+                        <i class="fa-solid fa-reply"></i>
+                    </button>
+                    <button id="restart-cards-btn" class="cards-action-btn" title="Reiniciar pilha">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Container da Pilha 3D de Cartões -->
+            <div id="flash-cards-container"></div>
+            
+            <!-- Barra de Progresso das Perguntas Respondidas -->
+            <div id="progress-bar"></div>
+        </div>
+    </main>
+
+    <div class="loading-gif hidden">
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+    </div>
+
+    <!-- TOAST DE FEEDBACK -->
+    <div id="auth-toast" class="toast"></div>
+
+    <script type="module" src="js/menu.js"></script>
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/cards.js"></script>
+     <script type="module" src="js/notifications.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="manage-meetings">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="assets/favicon.png">
+    <title>FluenTable | Sessões</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" id="logo">
+           <div class="logo-icon">
+           
+            <div class="logo-circle-center"> 
+                <div class="logo-circle-left"></div>
+                <div class="logo-inner-circle"></div>
+            </div> 
+           </div>
+        
+        </div>
+        <div class="header-actions">
+            <span class="user-role-badge" id="user-role-badge"></span>
+            <span class="user-email" id="user-email"></span>
+            <button id="logout-btn" class="logout-btn" title="Sair">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <!-- SEÇÃO SUPERIOR: NAVEGAÇÃO PRINCIPAL & MEDIAÇÃO -->
+            <ul class="sidebar-menu-top">
+                <li data-page="home"><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+                <li data-page="flash-cards"><a href="flash-cards.html"><i class="fa-solid fa-layer-group"></i><span>Flash Cards</span></a></li>
+            
+                <li data-page="slide-show" class="mediator-access hidden"><a href="presentation.html"><i class="fa-solid fa-play"></i><span>Iniciar sessão</span></a></li>
+                <li data-page="set-meeting" class="mediator-access hidden"><a href="set-meeting.html"><i class="fa-solid fa-comments"></i><span>Temas</span></a></li>
+            </ul>
+    
+            <!-- SEÇÃO INFERIOR: CONFIGURAÇÕES & ADMINISTRAÇÃO -->
+            <ul class="sidebar-menu-bottom">
+                <li class="sidebar-divider admin-access hidden"></li>
+                
+                <li data-page="admin" class="admin-access hidden">
+                    <a href="admin.html">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Acessos</span>
+                    </a>
+                </li>   
+                 
+
+                 <li data-page="manage-meetings" data-file="manage-meetings.html" class="mediator-access hidden">
+                    <a href="manage-meetings.html">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>Sessões</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="manage-meetings-page">
+      
+     <div class="content management-content" id="meetings-list-view">
+            <div class="page-header">
+                <h2>Sessões</h2>
+                <p>Selecione uma sessão para editar o tema, perguntas ou revisar e ajustar os flashcards gerados.</p>
+            </div>
+            
+            <div class="classes-grid" id="manage-meetings-grid">
+                <!-- Preenchido via JavaScript -->
+            </div>
+        </div>
+   
+        <!-- SEÇÃO 1: LISTAGEM DE REUNIÕES CADASTRADAS -->
+   
+
+        <!-- SEÇÃO 2: EDITOR DE FLASHCARDS DA REUNIÃO SELECIONADA -->
+        <div class="content management-content hidden" id="flashcards-editor-view">
+            <div class="back-button" id="back-to-meetings-list-btn">
+                <i class="fa-solid fa-circle-chevron-left"></i>
+                <span>Voltar às Sessões</span>
+            </div>
+
+            <div class="page-header">
+                <h2 id="selected-meeting-title">Tema da Sessão</h2>
+                <p>Edite os termos em inglês, as traduções ou remova cartões com erros.</p>
+            </div>
+
+            <!-- Adicionar Novo Flashcard Manualmente -->
+            <div class="add-card-manual-bar">
+                <input type="text" id="new-card-front" placeholder="Frente" autocomplete="off">
+                <input type="text" id="new-card-back" placeholder="Verso" autocomplete="off">
+                <button id="add-new-card-btn" class="home-btn" style="width: auto; padding: 0 24px;">
+                    <i class="fa-solid fa-plus"></i> Adicionar Card
+                </button>
+            </div>
+
+            <!-- Lista de Cartões da Reunião -->
+            <div class="cards-editor-container" id="cards-editor-container">
+                <!-- Cards renderizados dinamicamente aqui -->
+            </div>
+        </div>
+    </main>
+
+    <!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO (SEM ALERT/CONFIRM NATIVO) -->
+    <div class="modal-container hidden" id="delete-confirm-modal">
+        <div class="modal" style="max-width: 480px; padding: 30px;">
+            <div class="modal-content" style="gap: 15px;">
+                <h3 id="delete-modal-title">Confirmar Exclusão</h3>
+                <p id="delete-modal-msg">Tem certeza de que deseja excluir este item?</p>
+                <div class="flexbox" style="margin-top: 15px;">
+                    <button id="cancel-delete-btn" class="secondary-btn">Cancelar</button>
+                    <button id="confirm-delete-btn" class="danger-btn">Excluir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <div class="non-avaiable-message "  >
+            <h2>Não disponível</h2>
+            <p>Acesse o site pelo computador para gerenciar as sessões.</p>
+        </div>
+
+    <!-- FEEDBACK TOAST -->
+    <div id="auth-toast" class="toast"></div>
+
+    <div class="loading-gif hidden">
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+    </div>
+
+    <script type="module" src="js/menu.js"></script>
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/manage-meetings.js"></script>
+     <script type="module" src="js/notifications.js"></script>
+</body>
+</html>

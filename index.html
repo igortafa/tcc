@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR" id="home">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="icon" type="image/png" href="assets/favicon.png">
+    <title>FluenTable</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="logo" id="logo">
+           <div class="logo-icon">
+           
+            <div class="logo-circle-center"> 
+                <div class="logo-circle-left"></div>
+                <div class="logo-inner-circle"></div>
+            </div> 
+           </div>
+        
+        </div>
+        <div class="header-actions">
+            <span class="user-role-badge hidden" id="user-role-badge"></span>
+            <span class="user-email" id="user-email"></span>
+            <button id="logout-btn" class="logout-btn" title="Sair">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+        <nav class="sidebar-nav">
+            <!-- SEÇÃO SUPERIOR: NAVEGAÇÃO PRINCIPAL & MEDIAÇÃO -->
+            <ul class="sidebar-menu-top">
+                <li data-page="home"><a href="index.html"><i class="fa-solid fa-house"></i><span>Home</span></a></li>
+                <li data-page="flash-cards"><a href="flash-cards.html"><i class="fa-solid fa-layer-group"></i><span>Flash Cards</span></a></li>
+            
+                <li data-page="slide-show" class="mediator-access hidden"><a href="presentation.html"><i class="fa-solid fa-play"></i><span>Iniciar sessão</span></a></li>
+                <li data-page="set-meeting" class="mediator-access hidden"><a href="set-meeting.html"><i class="fa-solid fa-comments"></i><span>Temas</span></a></li>
+            </ul>
+    
+            <!-- SEÇÃO INFERIOR: CONFIGURAÇÕES & ADMINISTRAÇÃO -->
+            <ul class="sidebar-menu-bottom">
+                <li class="sidebar-divider admin-access hidden"></li>
+                
+                <li data-page="admin" class="admin-access hidden">
+                    <a href="admin.html">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <span>Acessos</span>
+                    </a>
+                </li>   
+                 
+
+                 <li data-page="manage-meetings" data-file="manage-meetings.html" class="mediator-access hidden">
+                    <a href="manage-meetings.html">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                        <span>Sessões</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main id="home-page">
+        <div class="content home-content">
+            <div class="welcome-section">
+                <h1>Bem-vindo ao <span class="highlight">FluenTable</span></h1>
+                <p class="welcome-subtitle">Sua mesa de conversação em inglês</p>
+                
+                <div class="home-page-options">
+                    <!-- Flash Cards: Todos os perfis -->
+                    <button class="home-btn" id="home-flash-cards">
+                        <i class="fa-solid fa-layer-group"></i>
+                        Flash Cards
+                    </button>
+            <button class="home-btn home-btn-secondary mediator-access hidden" id="home-start-meeting">
+                        <i class="fa-solid fa-play"></i>
+                        Iniciar sessão
+                    </button>
+                    <!-- Reuniões: Mediador e Admin -->
+                    <button class="home-btn home-btn-secondary mediator-access hidden" id="home-set-meeting">
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        Temas
+                    </button>
+        
+
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="loading-gif hidden">
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+    </div>
+
+    <script type="module" src="js/menu.js"></script>
+    <script type="module" src="js/firebase.js"></script>
+    <script type="module" src="js/auth.js"></script>
+     <script type="module" src="js/notifications.js"></script>
+    <script type="module" src="js/script.js"></script>
+    
+</body>
+
+
+
+</html>
